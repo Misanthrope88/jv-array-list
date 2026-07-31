@@ -58,15 +58,6 @@ public class ArrayList<T> implements List<T> {
         return removedElement;
     }
 
-    private void removeElementByIndex(int index) {
-        int elementsToMove = size - index - 1;
-        if (elementsToMove > 0) {
-            System.arraycopy(elements, index + 1, elements, index, elementsToMove);
-        }
-        elements[size - 1] = null;
-        size--;
-    }
-
     @Override
     public T remove(T element) {
         for (int i = 0; i < size; i++) {
@@ -75,6 +66,15 @@ public class ArrayList<T> implements List<T> {
             }
         }
         throw new NoSuchElementException("Element " + element + " does not exist");
+    }
+
+    private void removeElementByIndex(int index) {
+        int elementsToMove = size - index - 1;
+        if (elementsToMove > 0) {
+            System.arraycopy(elements, index + 1, elements, index, elementsToMove);
+        }
+        elements[size - 1] = null;
+        size--;
     }
 
     @Override
