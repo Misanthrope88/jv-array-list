@@ -54,13 +54,17 @@ public class ArrayList<T> implements List<T> {
     public T remove(int index) {
         checkIndex(index);
         T removedElement = (T) elements[index];
+        removeElementByIndex(index);
+        return removedElement;
+    }
+
+    private void removeElementByIndex(int index) {
         int elementsToMove = size - index - 1;
         if (elementsToMove > 0) {
             System.arraycopy(elements, index + 1, elements, index, elementsToMove);
         }
         elements[size - 1] = null;
         size--;
-        return removedElement;
     }
 
     @Override
